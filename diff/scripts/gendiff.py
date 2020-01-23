@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from diff.engine import generate_diff, arg_parse
-import argparse
 
 
 def main():

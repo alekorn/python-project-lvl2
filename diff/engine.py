@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from diff.formats.json import conv
 import argparse
 
@@ -16,20 +15,21 @@ def arg_parse():
     return args.first_file, args.second_file
 
 
-def generate_diff(first_file, second_file):
-    first, second = conv(first_file, second_file)
+def generate_diff(first_file, second_file):          # добавить аргумент формат
+    first, second = conv(first_file, second_file)    # вынести в скрипт
     added_keys = first.keys() - second.keys()
     deleted_keys = second.keys() - first.keys()
     other_keys = first.keys() & second.keys()
-    print('{')
+    output_string = '{\n'
     for key in other_keys:
         if first[key] == second[key]:
-            print(f'    {key}: {first[key]}')
+            output_string += f'    {key}: {first[key]}\n'
         else:
-            print(f'  + {key}: {first[key]}')
-            print(f'  - {key}: {second[key]}')
+            output_string += f'  + {key}: {first[key]}\n'
+            output_string += f'  - {key}: {second[key]}\n'
     for key in added_keys:
-        print(f'  - {key}: {first[key]}')
+        output_string += f'  - {key}: {first[key]}\n'
     for key in deleted_keys:
-        print(f'  + {key}: {second[key]}')
-    print('}')
+        output_string += f'  + {key}: {second[key]}\n'
+    output_string += '}'
+    return output_string
