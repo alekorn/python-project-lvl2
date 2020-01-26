@@ -17,9 +17,9 @@ def arg_parse():
 
 def generate_diff(first_file, second_file):          # добавить аргумент формат
     first, second = conv(first_file, second_file)    # вынести в скрипт
-    added_keys = first.keys() - second.keys()
-    deleted_keys = second.keys() - first.keys()
-    other_keys = first.keys() & second.keys()
+    added_keys = sorted(first.keys() - second.keys())
+    deleted_keys = sorted(second.keys() - first.keys())
+    other_keys = sorted(first.keys() & second.keys())
     output_string = '{\n'
     for key in other_keys:
         if first[key] == second[key]:
