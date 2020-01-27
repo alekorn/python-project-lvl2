@@ -1,4 +1,4 @@
-from diff.formats.json import conv
+from diff.parsers import parse
 import argparse
 
 
@@ -12,11 +12,11 @@ def arg_parse():
     parser.add_argument('first_file', type=str, help='')
     parser.add_argument('second_file', type=str, help='')
     args = parser.parse_args()
-    return args.first_file, args.second_file
+    return args.first_file, args.second_file, args.format
 
 
-def generate_diff(first_file, second_file):          # добавить аргумент формат
-    first, second = conv(first_file, second_file)    # вынести в скрипт
+def generate_diff(first_file, second_file, format):
+    first, second = parse(first_file, second_file, format)  # в скрипт
     added_keys = sorted(first.keys() - second.keys())
     deleted_keys = sorted(second.keys() - first.keys())
     other_keys = sorted(first.keys() & second.keys())
