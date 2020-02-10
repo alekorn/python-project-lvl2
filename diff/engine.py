@@ -38,15 +38,15 @@ def get_diff(first, second, new_dict=None):
         for key in not_changed:
             new_dict[('not_changed', key)] = first[key]
         for key in changed:
-            if not isinstance(first[key], dict) and not isinstance(second[key], dict):
-                new_dict[('changed', key)] = (first[key], second[key])
-            else:
+            if isinstance(first[key], dict) and isinstance(second[key], dict):
                 new_dict[('has_child', key)] = {}
                 get_diff(
                     first[key],
                     second[key],
                     new_dict[('has_child', key)]
                 )
+            else:
+                new_dict[('changed', key)] = (first[key], second[key])
         return new_dict
 
 
