@@ -26,28 +26,27 @@ def generate_diff(first_file, second_file, format):
     return get_diff(first, second)
 
 
-def get_diff(first, second, new_dict=None, parent=('has_child', None)):
+def get_diff(first, second, new_dict=None):
     if new_dict is None:
-        new_dict = {('has_child', None): {}}
+        new_dict = {}
     if isinstance(first, dict) and isinstance(second, dict):
         deleted, added, not_changed, changed = compare_keys(first, second)
         for key in added:
-            new_dict[parent][('added', key)] = second[key]
+            new_dict[('added', key)] = second[key]
         for key in deleted:
-            new_dict[parent][('deleted', key)] = first[key]
+            new_dict[('deleted', key)] = first[key]
         for key in not_changed:
-            new_dict[parent][('not_changed', key)] = first[key]
+            new_dict[('not_changed', key)] = first[key]
         for key in changed:
-            if isinstance(first[key], dict) and isinstance(second[key], dict):
-                new_dict[parent][('has_child', key)] = {}
-                get_diff(
-                        first[key],
-                        second[key],
-                        new_dict[parent],
-                        ('has_child', key)
-                        )
+            if not isinstance(first[key], dict) and not isinstance(second[key], dict):
+                new_dict[('changed', key)] = (first[key], second[key])
             else:
-                new_dict[parent][('changed', key)] = (first[key], second[key])
+                new_dict[('has_child', key)] = {}
+                get_diff(
+                    first[key],
+                    second[key],
+                    new_dict[('has_child', key)]
+                )
         return new_dict
 
 
