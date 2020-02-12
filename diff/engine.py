@@ -1,12 +1,6 @@
 from diff.parsers import parse
 import argparse
 
-ADD = '  + '
-DEL = '  - '
-TAB = '    '
-END = '}'
-START = '{'
-
 
 def arg_parse():
     parser = argparse.ArgumentParser(description='Generate diff')
@@ -22,7 +16,7 @@ def arg_parse():
 
 
 def generate_diff(first_file, second_file, format):
-    first, second = parse(first_file, second_file, format)  # в скрипт
+    first, second = parse(first_file, second_file, format)
     return get_diff(first, second)
 
 
@@ -62,52 +56,3 @@ def compare_keys(first_dict, second_dict):
         else:
             changed.append(key)
     return added_keys, deleted_keys, not_changed, changed
-
-
-def rendering(new_dict, new_list=None, tab=''):
-    if new_list is None:
-        new_list = []
-    if new_list:
-        tab += '    '
-    for key in new_dict:
-        if key[0] == 'has_child' and key[1]:
-            new_list.append(f'{tab}{TAB}{key[1]}: {START}')
-        if key[0] == 'has_child':
-            rendering(new_dict[key], new_list, tab)
-    for key in new_dict:
-        if key[0] == 'added' and isinstance(new_dict[key], dict):
-            new_list.append(f'{tab}{ADD}{key[1]}: {START}')
-            new_list.append(f'{TAB * 2 + tab}{stringify(new_dict[key])}')
-            new_list.append(f'{TAB}{tab}{END}')
-        elif key[0] == 'added':
-            new_list.append(f'{tab}{ADD}{key[1]}: {new_dict[key]}')
-        if key[0] == 'deleted' and isinstance(new_dict[key], dict):
-            new_list.append(f'{tab}{DEL}{key[1]}: {START}')
-            new_list.append(f'{TAB * 2 + tab}{stringify(new_dict[key])}')
-            new_list.append(f'{TAB}{tab}{END}')
-        elif key[0] == 'deleted':
-            new_list.append(f'{tab}{DEL}{key[1]}: {new_dict[key]}')
-        if key[0] == 'not_changed' and isinstance(new_dict[key], dict):
-            new_list.append(f'{tab}{TAB}{key[1]}: {START}')
-            new_list.append(f'{TAB * 2 + tab}{stringify(new_dict[key])}')
-            new_list.append(f'{TAB}{tab}{END}')
-        elif key[0] == 'not_changed':
-            new_list.append(f'{tab}{TAB}{key[1]}: {new_dict[key]}')
-        if key[0] == 'changed' and isinstance(new_dict[key], dict):
-            new_list.append(f'{tab}{TAB}{key[1]}: {START}')
-            new_list.append(f'{tab}{DEL}{key[1]}: {new_dict[key][0]}')
-            new_list.append(f'{tab}{ADD}{key[1]}: {new_dict[key][1]}')
-            new_list.append(f'{TAB}{tab}{END}')
-        elif key[0] == 'changed':
-            new_list.append(f'{tab}{DEL}{key[1]}: {new_dict[key][0]}')
-            new_list.append(f'{tab}{ADD}{key[1]}: {new_dict[key][1]}')
-    if key[1]:
-        new_list.append(f'{tab}{END}')
-    return '{\n' + '\n'.join(new_list)
-
-
-def stringify(new_dict):
-    out_string = ''
-    for key in new_dict:
-        out_string += f'{key}: {new_dict[key]}'
-    return (out_string)
