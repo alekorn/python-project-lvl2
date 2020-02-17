@@ -1,2 +1,2 @@
-from diff.formatters import json
-__all__ = ['json']
+from diff.formatters import json_format
+__all__ = ['json_format']
