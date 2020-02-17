@@ -1,0 +1,10 @@
+{('added', 'group3'): {'fee': '100500'},
+ ('deleted', 'group2'): {'abc': '12345'},
+ ('has_child', 'common'): {('added', 'setting4'): 'blah blah',
+  ('added', 'setting5'): {'key5': 'value5'},
+  ('deleted', 'setting2'): '200',
+  ('deleted', 'setting6'): {'key': 'value'},
+  ('not_changed', 'setting1'): 'Value 1',
+  ('not_changed', 'setting3'): True},
+ ('has_child', 'group1'): {('not_changed', 'foo'): 'bar',
+  ('changed', 'baz'): ('bas', 'bars')}}

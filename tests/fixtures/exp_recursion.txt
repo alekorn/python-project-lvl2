@@ -1,4 +1,10 @@
 {
+  + group3: {
+        fee: 100500
+    }
+  - group2: {
+        abc: 12345
+    }
     common: {
       + setting4: blah blah
       + setting5: {
@@ -15,11 +21,5 @@
         foo: bar
       - baz: bas
       + baz: bars
-    }
-  + group3: {
-        fee: 100500
-    }
-  - group2: {
-        abc: 12345
     }
 }
