@@ -4,8 +4,8 @@ from diff.formatters import json_format
 
 
 def main():
-    first_file, second_file, format = arg_parse()
-    print(json_format.rendering(generate_diff(first_file, second_file, format)))
+    first_file, second_file, form = arg_parse()
+    print(json_format.rendering(generate_diff(first_file, second_file, form)))
 
 
 if __name__ == '__main__':
