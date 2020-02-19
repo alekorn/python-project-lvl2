@@ -1,2 +1,2 @@
-from diff.formatters import json_format
-__all__ = ['json_format']
+from diff.formatters import recursive
+__all__ = ['recursive']
