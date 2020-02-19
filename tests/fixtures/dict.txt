@@ -1,0 +1,57 @@
+TEST = {
+        'group3': {
+            'status': 'added',
+            'value': {
+                'fee': '100500'
+                }
+            },
+        'group2': {
+            'status': 'deleted',
+            'value': {
+                'abc': '12345'
+                }
+            },
+        'common': {
+            'status': 'has_child',
+            'value': {
+                'setting4': {
+                    'status': 'added',
+                    'value': 'blah blah'
+                    },
+                'setting5': {
+                    'status': 'added',
+                    'value': {'key': 'value'}
+                    },
+                'setting2': {
+                    'status': 'deleted',
+                    'value': '200'
+                    },
+                'setting6': {
+                    'status': 'deleted',
+                    'value': {'key': 'value'}
+                    },
+                'setting1': {
+                    'status': 'not_changed',
+                    'value': 'Value1'
+                    },
+                'setting3': {
+                    'status': 'not_changed',
+                    'value': True
+                    },
+                }
+            },
+        'group1': {
+            'status': 'has_child',
+            'value': {
+                'foo': {
+                    'status': 'not_changed',
+                    'value': 'bar'
+                    },
+                'baz': {
+                    'status': 'changed',
+                    'value1': 'bas',
+                    'value2': 'bars'
+                    },
+                }
+            }
+        }
