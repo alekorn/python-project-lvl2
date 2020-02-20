@@ -15,11 +15,11 @@
       + setting5: {
             key5: value5
         }
+      - setting2: 200
       - setting6: {
             key: value
         }
-      - setting2: 200
-        setting1: Value 1
         setting3: true
+        setting1: Value 1
     }
 }
