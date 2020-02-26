@@ -7,6 +7,8 @@ test:
 lint:
 	poetry run flake8 gendiff
 
+check: test lint
+
 build: check
 	@poetry build
 
