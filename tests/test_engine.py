@@ -10,7 +10,7 @@ BEFORE_REC_JSON = json.loads(open('./tests/fixtures/input/before_recursion.json'
 AFTER_REC_JSON = json.loads(open('./tests/fixtures/input/after_recursion.json', 'r').read().rstrip())
 BEFORE_REC_YAML = yaml.safe_load(open('./tests/fixtures/input/before_recursion.yml', 'r').read().rstrip())
 AFTER_REC_YAML = yaml.safe_load(open('./tests/fixtures/input/after_recursion.yml', 'r').read().rstrip())
-
+EXP_DUMP = open('./tests/fixtures/result/exp_dump.txt', 'r').read().rstrip()
 
 def test_generate_diff_1():
     assert get_diff(BEFORE_REC_JSON, AFTER_REC_JSON) == EXP_GEN_DIFF
@@ -24,5 +24,9 @@ def test_recursive_rendering():
     assert recursive.rendering(EXP_GEN_DIFF) == EXP_REC
 
 
-def test_flat_rendering():
+def test_plain_rendering():
     assert plain.rendering(EXP_GEN_DIFF) == EXP_PLAIN
+
+
+def test_dump_rendering():
+    assert dump.rendering(recursive.rendering(EXP_GEN_DIFF)) == EXP_DUMP
