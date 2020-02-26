@@ -9,7 +9,7 @@ before_install:
   - pip install poetry
 
 install:
-  - make instale
+  - make install
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
