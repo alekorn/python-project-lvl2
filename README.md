@@ -4,7 +4,11 @@
 ### CLI utility for building diff between json and yaml configuration files
 ### learning project
 ## Installation
-```pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple alekorn-gendiff```
+
+```
+pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple alekorn-gendiff
+```
+
 [![asciicast](https://asciinema.org/a/BZdoAfpeQvyuMGmQNifQzIjHF.svg)](https://asciinema.org/a/BZdoAfpeQvyuMGmQNifQzIjHF)
 ## json diff
 [![asciicast](https://asciinema.org/a/GaXVH7DhR5PmogQs0lghlDc7G.svg)](https://asciinema.org/a/GaXVH7DhR5PmogQs0lghlDc7G)
