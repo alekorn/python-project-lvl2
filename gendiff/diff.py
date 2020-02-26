@@ -4,14 +4,26 @@ def get_diff(first, second, new_dict=None):
     if isinstance(first, dict) and isinstance(second, dict):
         deleted, added, not_changed, changed = compare_keys(first, second)
         for key in added:
-            new_dict[key] = {'status': 'added', 'value': second[key]}
+            new_dict[key] = {
+                    'status': 'added',
+                    'value': second[key]
+                    }
         for key in deleted:
-            new_dict[key] = {'status': 'deleted', 'value': first[key]}
+            new_dict[key] = {
+                    'status': 'deleted',
+                    'value': first[key]
+                    }
         for key in not_changed:
-            new_dict[key] = {'status': 'not_changed', 'value': first[key]}
+            new_dict[key] = {
+                    'status': 'not_changed',
+                    'value': first[key]
+                    }
         for key in changed:
             if isinstance(first[key], dict) and isinstance(second[key], dict):
-                new_dict[key] = {'status': 'has_child', 'value': {}}
+                new_dict[key] = {
+                        'status': 'has_child',
+                        'value': {}
+                        }
                 get_diff(first[key], second[key], new_dict[key]['value'])
             else:
                 new_dict[key] = {
