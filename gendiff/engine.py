@@ -1,4 +1,4 @@
-from gendiff.formatters import recursive, plain
+from gendiff.formatters import recursive, plain, dump
 from gendiff.parsers import parse
 from gendiff.diff import get_diff
 import argparse
@@ -26,5 +26,5 @@ def generate_diff(first_file, second_file, form):
     elif form == 'plain':
         result = plain.rendering(get_diff(first, second))
     elif form == 'dump':
-        pass
+        result = dump.rendering(recursive.rendering(get_diff(first, second)))
     return result
