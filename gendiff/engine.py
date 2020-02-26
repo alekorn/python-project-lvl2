@@ -27,6 +27,4 @@ def generate_diff(first_file, second_file, form):
         result = plain.rendering(get_diff(first, second))
     elif form == 'dump':
         result = dump.rendering(recursive.rendering(get_diff(first, second)))
-    else:
-        result = "This format is not supported, run 'gendiff -h' to help"
     return result
