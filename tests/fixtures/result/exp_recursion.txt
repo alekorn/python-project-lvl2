@@ -5,11 +5,6 @@
   - group2: {
         abc: 12345
     }
-    group1: {
-        foo: bar
-      - baz: bas
-      + baz: bars
-    }
     common: {
       + setting4: blah blah
       + setting5: {
@@ -19,7 +14,12 @@
       - setting6: {
             key: value
         }
-        setting3: true
         setting1: Value 1
+        setting3: true
+    }
+    group1: {
+        foo: bar
+      - baz: bas
+      + baz: bars
     }
 }
