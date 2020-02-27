@@ -1,9 +1,9 @@
+language: python
+python: 3.7.5
+
 env:
   global:
     - CC_TEST_REPORTER_ID=d157dcd6681ab13e0bce28aa81be53b246e5299cf074f2d621612105aa023e88
-
-language: python
-python: 3.7.5
 
 before_install:
   - pip install poetry
@@ -17,8 +17,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - make lint
-  - make test
+  - make check
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
