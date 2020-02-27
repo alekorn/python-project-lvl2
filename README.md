@@ -16,3 +16,5 @@ pip install --index-url https://test.pypi.org/simple --extra-index-url https://p
 [![asciicast](https://asciinema.org/a/hUpHLwKaLkm7y1nuBEmibRYNB.svg)](https://asciinema.org/a/hUpHLwKaLkm7y1nuBEmibRYNB)
 ## plain text diff
 [![asciicast](https://asciinema.org/a/EuhBCx2k6LCgHrr49CXHSE0GV.svg)](https://asciinema.org/a/EuhBCx2k6LCgHrr49CXHSE0GV)
+## json dump diff
+[![asciicast](https://asciinema.org/a/peiBrY4KKze8fQWn6jnpFMQ1O.svg)](https://asciinema.org/a/peiBrY4KKze8fQWn6jnpFMQ1O)
