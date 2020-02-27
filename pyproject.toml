@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alekorn-gendiff"
-version = "0.4.0"
+version = "0.4.1"
 description = ""
 authors = ["alekorn <entkorn@gmail.com>"]
 packages = [
@@ -10,6 +10,7 @@ packages = [
 python = "^3.7"
 PyYAML = "^5.3"
 pylint = "^2.4.4"
+coverage = "^5.0.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"
