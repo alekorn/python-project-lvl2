@@ -31,7 +31,7 @@ def test_plain_rendering():
 
 
 def test_dump_rendering():
-    assert dump.rendering(recursive.rendering(EXP_GEN_DIFF)) == EXP_DUMP
+    assert dump.rendering(EXP_GEN_DIFF) == EXP_DUMP
 
 
 def test_generate_diff_1():
