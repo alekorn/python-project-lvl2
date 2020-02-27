@@ -26,5 +26,5 @@ def generate_diff(first_file, second_file, form):
     elif form == 'plain':
         result = plain.rendering(get_diff(first, second))
     elif form == 'dump':
-        result = dump.rendering(recursive.rendering(get_diff(first, second)))
+        result = dump.rendering(get_diff(first, second))
     return result

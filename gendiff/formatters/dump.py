@@ -1,5 +1,5 @@
 import json
 
 
-def rendering(dic):
-    return json.dumps(dic)
+def rendering(dictionary):
+    return json.dumps(dictionary)
