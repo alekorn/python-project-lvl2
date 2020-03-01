@@ -40,13 +40,6 @@ def stringify(inp, status, current_key, tab):
     return out_string
 
 
-def stringify_chg(inp, current_key, tab):
-    out_string = ''
-    out_string += f'{tab}{DEL}{current_key}: {truefy(inp["value1"])}\n'
-    out_string += f'{tab}{ADD}{current_key}: {truefy(inp["value2"])}'
-    return out_string
-
-
 def truefy(string):
     if string is True:
         return 'true'
