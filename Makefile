@@ -12,4 +12,4 @@ check: test lint
 build: check
 	@poetry build
 
-.PHONY: install test lint build
+.PHONY: install test check lint build
