@@ -2,65 +2,66 @@ from gendiff.engine import get_diff
 from gendiff.formatters import recursive, plain, dump
 from gendiff.fileloader import json_load, yaml_load, txt_load
 from gendiff import generate_diff
+import json
 
-EXP_GEN_DIFF = json_load('./tests/fixtures/result/exp_generate_diff.json')
-EXP_REC = txt_load('./tests/fixtures/result/exp_recursion.txt')
-EXP_PLAIN = txt_load('./tests/fixtures/result/exp_plain.txt')
-EXP_DUMP = txt_load('./tests/fixtures/result/exp_dump.txt')
+EXP_GEN_DIFF = './tests/fixtures/result/exp_generate_diff.json'
+EXP_REC = './tests/fixtures/result/exp_recursion.txt'
+EXP_PLAIN = './tests/fixtures/result/exp_plain.txt'
+EXP_DUMP = './tests/fixtures/result/exp_dump.txt'
 
-BEFORE_REC_JSON = json_load('./tests/fixtures/input/before_recursion.json')
-AFTER_REC_JSON = json_load('./tests/fixtures/input/after_recursion.json')
-BEFORE_REC_YAML = yaml_load('./tests/fixtures/input/before_recursion.yml')
-AFTER_REC_YAML = yaml_load('./tests/fixtures/input/after_recursion.yml')
-
-
-def test_get_diff_1():
-    assert get_diff(BEFORE_REC_JSON, AFTER_REC_JSON) == EXP_GEN_DIFF
+BEFORE_REC_JSON = './tests/fixtures/input/before_recursion.json'
+AFTER_REC_JSON = './tests/fixtures/input/after_recursion.json'
+BEFORE_REC_YAML = './tests/fixtures/input/before_recursion.yml'
+AFTER_REC_YAML = './tests/fixtures/input/after_recursion.yml'
 
 
-def test_get_diff_2():
-    assert get_diff(BEFORE_REC_YAML, AFTER_REC_YAML) == EXP_GEN_DIFF
+def test_get_diff1():
+    assert get_diff(json_load(BEFORE_REC_JSON), json_load(AFTER_REC_JSON)) == json_load(EXP_GEN_DIFF)
+
+
+def test_get_diff2():
+    assert get_diff(yaml_load(BEFORE_REC_YAML), yaml_load(AFTER_REC_YAML)) == json_load(EXP_GEN_DIFF)
 
 
 def test_recursive_rendering():
-    assert recursive.rendering(EXP_GEN_DIFF) == EXP_REC
+    assert recursive.rendering(json_load(EXP_GEN_DIFF)) == txt_load(EXP_REC)
 
 
 def test_plain_rendering():
-    assert plain.rendering(EXP_GEN_DIFF) == EXP_PLAIN
+    assert plain.rendering(json_load(EXP_GEN_DIFF)) == txt_load(EXP_PLAIN)
 
 
 def test_dump_rendering():
-    assert dump.rendering(EXP_GEN_DIFF) == EXP_DUMP
+    assert dump.rendering(json_load(EXP_GEN_DIFF)) == json.dumps(json_load(EXP_GEN_DIFF), indent=4)
 
 
-def test_generate_diff_1():
+def test_generate_diff1():
     assert generate_diff(
-            './tests/fixtures/input/before_recursion.json',
-            './tests/fixtures/input/after_recursion.json',
+            BEFORE_REC_JSON,
+            AFTER_REC_JSON,
             'json'
-            ) == EXP_REC
+            ) == txt_load(EXP_REC)
 
 
-def test_generate_diff_2():
+def test_generate_diff2():
     assert generate_diff(
-            './tests/fixtures/input/before_recursion.yml',
-            './tests/fixtures/input/after_recursion.yml',
+            BEFORE_REC_YAML,
+            AFTER_REC_YAML,
             'yaml'
-            ) == EXP_REC
+            ) == txt_load(EXP_REC)
 
 
-def test_generate_diff_3():
+def test_generate_diff3():
     assert generate_diff(
-            './tests/fixtures/input/before_recursion.json',
-            './tests/fixtures/input/after_recursion.json',
+            BEFORE_REC_JSON,
+            AFTER_REC_JSON,
             'plain'
-            ) == EXP_PLAIN
+            ) == txt_load(EXP_PLAIN)
 
 
-def test_generate_diff_4():
+def test_generate_diff4():
     assert generate_diff(
-            './tests/fixtures/input/before_recursion.json',
-            './tests/fixtures/input/after_recursion.json',
+            BEFORE_REC_JSON,
+            AFTER_REC_JSON,
             'dump'
-            ) == EXP_DUMP
+            ) == json.dumps(json_load(EXP_GEN_DIFF), indent=4)
