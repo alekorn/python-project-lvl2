@@ -18,8 +18,8 @@ def rendering(dic, out_list=None, tab=''):
         elif dic[key]['status'] == 'not_changed':
             out_list.append(stringify(dic[key]['value'], TAB, key, tab))
         elif dic[key]['status'] == 'changed':
-            out_list.append(f'{tab}{DEL}{key}: {truefy(dic[key]["value1"])}')
-            out_list.append(f'{tab}{ADD}{key}: {truefy(dic[key]["value2"])}')
+            out_list.append(f'{tab}{DEL}{key}: {truefy(dic[key]["old_value"])}')
+            out_list.append(f'{tab}{ADD}{key}: {truefy(dic[key]["value"])}')
         elif dic[key]['status'] == 'has_child':
             out_list.append(f'{tab}{TAB}{key}: {START}')
             rendering(dic[key]['value'], out_list, tab)

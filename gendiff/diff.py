@@ -31,8 +31,8 @@ def get_diff(first, second, new_dict=None):
                     ):
                 new_dict[key] = {
                         'status': CHANGED,
-                        'value1': first_value,
-                        'value2': second_value
+                        'old_value': first_value,
+                        'value': second_value
                         }
             else:
                 inner = {}
