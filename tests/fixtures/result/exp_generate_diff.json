@@ -1,19 +1,19 @@
 {
-    "group3": {
-        "status": "added",
-        "value": {
-            "fee": "100500"
-        }
-    },
-    "group2": {
-        "status": "deleted",
-        "value": {
-            "abc": "12345"
-        }
-    },
     "common": {
         "status": "has_child",
         "value": {
+            "setting1": {
+                "status": "not_changed",
+                "value": "Value 1"
+            },
+            "setting2": {
+                "status": "deleted",
+                "value": "200"
+            },
+            "setting3": {
+                "status": "not_changed",
+                "value": true
+            },
             "setting4": {
                 "status": "added",
                 "value": "blah blah"
@@ -24,38 +24,38 @@
                     "key5": "value5"
                 }
             },
-            "setting2": {
-                "status": "deleted",
-                "value": "200"
-            },
             "setting6": {
                 "status": "deleted",
                 "value": {
                     "key": "value"
                 }
-            },
-            "setting1": {
-                "status": "not_changed",
-                "value": "Value 1"
-            },
-            "setting3": {
-                "status": "not_changed",
-                "value": true
             }
         }
     },
     "group1": {
         "status": "has_child",
         "value": {
+            "baz": {
+                "old_value": "bas",
+                "status": "changed",
+                "value": "bars"
+            },
             "foo": {
                 "status": "not_changed",
                 "value": "bar"
-            },
-            "baz": {
-                "status": "changed",
-                "old_value": "bas",
-                "value": "bars"
             }
+        }
+    },
+    "group2": {
+        "status": "deleted",
+        "value": {
+            "abc": "12345"
+        }
+    },
+    "group3": {
+        "status": "added",
+        "value": {
+            "fee": "100500"
         }
     }
 }
