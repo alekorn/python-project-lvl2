@@ -45,9 +45,9 @@ def get_diff(first, second, new_dict=None):
 
 
 def compare_keys(first_dict, second_dict):
-    added_keys = sorted(first_dict.keys() - second_dict.keys())
-    deleted_keys = sorted(second_dict.keys() - first_dict.keys())
-    other_keys = sorted(first_dict.keys() & second_dict.keys())
+    added_keys = first_dict.keys() - second_dict.keys()
+    deleted_keys = second_dict.keys() - first_dict.keys()
+    other_keys = first_dict.keys() & second_dict.keys()
     not_changed = []
     changed = []
     for key in other_keys:

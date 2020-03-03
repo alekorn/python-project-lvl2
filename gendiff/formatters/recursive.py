@@ -11,7 +11,8 @@ def rendering(dic, out_list=None, tab=''):
         out_list = [START]
     else:
         tab += '    '
-    for key, value in dic.items():
+    items = sorted(dic.items())
+    for key, value in items:
         status_key = value['status']
         value_key = value['value']
         if status_key == ADDED:
