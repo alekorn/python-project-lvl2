@@ -53,8 +53,8 @@
             },
             "baz": {
                 "status": "changed",
-                "value1": "bas",
-                "value2": "bars"
+                "old_value": "bas",
+                "value": "bars"
             }
         }
     }
