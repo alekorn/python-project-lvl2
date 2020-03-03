@@ -11,10 +11,10 @@ def arg_parse():
         '--format',
         help='set format of output'
     )
-    parser.add_argument('first_file', type=str, help='')
-    parser.add_argument('second_file', type=str, help='')
+    parser.add_argument('first_file', help='')
+    parser.add_argument('second_file', help='')
     args = parser.parse_args()
-    return args.first_file, args.second_file, args.format
+    return args
 
 
 def generate_diff(first_file, second_file, form):

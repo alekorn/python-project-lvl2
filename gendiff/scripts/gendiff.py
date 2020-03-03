@@ -3,8 +3,10 @@ from gendiff.engine import arg_parse, generate_diff
 
 
 def main():
-    file1, file2, form = arg_parse()
-    print(generate_diff(file1, file2, form))
+    print(generate_diff(
+        arg_parse().first_file,
+        arg_parse().second_file,
+        arg_parse().format))
 
 
 if __name__ == '__main__':
