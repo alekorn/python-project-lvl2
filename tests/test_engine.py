@@ -1,6 +1,6 @@
 from gendiff.engine import get_diff
 from gendiff.formatters import recursive, plain, dump
-from gendiff.fileloader import json_load, yaml_load, txt_load
+from gendiff.loaders import json_load, yaml_load, txt_load
 from gendiff import generate_diff
 import json
 
@@ -16,11 +16,13 @@ AFTER_REC_YAML = './tests/fixtures/input/after_recursion.yml'
 
 
 def test_get_diff1():
-    assert get_diff(json_load(BEFORE_REC_JSON), json_load(AFTER_REC_JSON)) == json_load(EXP_GEN_DIFF)
+    assert get_diff(json_load(BEFORE_REC_JSON
+        ), json_load(AFTER_REC_JSON)) == json_load(EXP_GEN_DIFF)
 
 
 def test_get_diff2():
-    assert get_diff(yaml_load(BEFORE_REC_YAML), yaml_load(AFTER_REC_YAML)) == json_load(EXP_GEN_DIFF)
+    assert get_diff(yaml_load(BEFORE_REC_YAML
+        ), yaml_load(AFTER_REC_YAML)) == json_load(EXP_GEN_DIFF)
 
 
 def test_recursive_rendering():
@@ -32,7 +34,8 @@ def test_plain_rendering():
 
 
 def test_dump_rendering():
-    assert dump.rendering(json_load(EXP_GEN_DIFF)) == json.dumps(json_load(EXP_GEN_DIFF), indent=4)
+    assert dump.rendering(json_load(EXP_GEN_DIFF)
+            ) == json.dumps(json_load(EXP_GEN_DIFF), indent=4)
 
 
 def test_generate_diff1():
