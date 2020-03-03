@@ -1,0 +1,5 @@
+ADDED = 'added'
+DELETED = 'deleted'
+CHANGED = 'changed'
+NOT_CHANGED = 'not_changed'
+HAS_CHILDS = 'has_child'

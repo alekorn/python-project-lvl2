@@ -1,41 +1,47 @@
+from gendiff.constants import ADDED, DELETED, NOT_CHANGED, CHANGED, HAS_CHILDS
+
+
 def get_diff(first, second, new_dict=None):
     if new_dict is None:
         new_dict = {}
-    if isinstance_dicts(first, second):
+    if isinstance(first, dict) and isinstance(second, dict):
         deleted, added, not_changed, changed = compare_keys(first, second)
         for key in added:
             new_dict[key] = {
-                    'status': 'added',
+                    'status': ADDED,
                     'value': second[key]
                     }
         for key in deleted:
             new_dict[key] = {
-                    'status': 'deleted',
+                    'status': DELETED,
                     'value': first[key]
                     }
         for key in not_changed:
             new_dict[key] = {
-                    'status': 'not_changed',
+                    'status': NOT_CHANGED,
                     'value': first[key]
                     }
         for key in changed:
-            if not isinstance_dicts(first[key], second[key]):
+            first_value = first[key]
+            second_value = second[key]
+            if (
+                    not isinstance(first_value, dict)
+                    and
+                    not isinstance(second_value, dict)
+                    ):
                 new_dict[key] = {
-                        'status': 'changed',
-                        'value1': first[key],
-                        'value2': second[key]
+                        'status': CHANGED,
+                        'value1': first_value,
+                        'value2': second_value
                         }
             else:
+                inner = {}
                 new_dict[key] = {
-                        'status': 'has_child',
-                        'value': {}
+                        'status': HAS_CHILDS,
+                        'value': inner
                         }
-                get_diff(first[key], second[key], new_dict[key]['value'])
+                get_diff(first_value, second_value, inner)
         return new_dict
-
-
-def isinstance_dicts(first_dict, second_dict):
-    return isinstance(first_dict, dict) and isinstance(second_dict, dict)
 
 
 def compare_keys(first_dict, second_dict):
