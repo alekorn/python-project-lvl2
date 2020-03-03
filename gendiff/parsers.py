@@ -1,4 +1,4 @@
-from gendiff.fileloader import json_load, yaml_load
+from gendiff.loaders import json_load, yaml_load
 import os
 
 
