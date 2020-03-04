@@ -6,7 +6,7 @@ END = '}'
 START = '{'
 
 
-def rendering(dic, out_list=None, tab=''):
+def format(dic, out_list=None, tab=''):
     if out_list is None:
         out_list = [START]
     else:
@@ -26,7 +26,7 @@ def rendering(dic, out_list=None, tab=''):
             out_list.append(f'{tab}{ADD}{key}: {truefy(value_key)}')
         elif status_key == HAS_CHILDS:
             out_list.append(f'{tab}{TAB}{key}: {START}')
-            rendering(value_key, out_list, tab)
+            format(value_key, out_list, tab)
     if key:
         out_list.append(f'{tab}{END}')
     return '\n'.join(out_list)

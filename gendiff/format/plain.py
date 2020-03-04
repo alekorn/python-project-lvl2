@@ -1,4 +1,4 @@
-def rendering(dic, out_list=None, path=''):
+def format(dic, out_list=None, path=''):
     if out_list is None:
         out_list = []
     for key, value in dic.items():
@@ -21,6 +21,6 @@ def rendering(dic, out_list=None, path=''):
                     )
         elif status_key == 'has_child':
             new_path = path + key + '.'
-            rendering(value_key, out_list, new_path)
+            format(value_key, out_list, new_path)
     out_list.sort()
     return '\n'.join(out_list).rstrip()
