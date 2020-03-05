@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alekorn-gendiff"
-version = "0.4.1"
+version = "0.5.0"
 description = ""
 authors = ["alekorn <entkorn@gmail.com>"]
 packages = [
