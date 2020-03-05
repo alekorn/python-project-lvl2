@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-from gendiff.engine import arg_parse, generate_diff
+from gendiff.engine import arg_parse, get_diff
 
 
 def main():
-    print(generate_diff(
-        arg_parse().first_file,
-        arg_parse().second_file,
-        arg_parse().format))
+    first_dict, second_dict, format = arg_parse()
+    print(format(get_diff(first_dict, second_dict)))
 
 
 if __name__ == '__main__':

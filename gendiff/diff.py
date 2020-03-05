@@ -41,7 +41,7 @@ def get_diff(first, second, new_dict=None):
                         'value': inner
                         }
                 get_diff(first_value, second_value, inner)
-        return new_dict
+    return new_dict
 
 
 def compare_keys(first_dict, second_dict):

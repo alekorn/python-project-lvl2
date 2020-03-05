@@ -1,4 +1,5 @@
 from gendiff.constants import ADDED, DELETED, CHANGED, NOT_CHANGED, HAS_CHILDS
+
 ADD = '  + '
 DEL = '  - '
 TAB = '    '
