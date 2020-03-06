@@ -8,6 +8,13 @@
 ```
 pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple alekorn-gendiff
 ```
+# 0.5.0
+## gendiff -f default
+[![asciicast](https://asciinema.org/a/oVfXRdLNuZ0YeHqTWWFBVFW86.svg)](https://asciinema.org/a/oVfXRdLNuZ0YeHqTWWFBVFW86)
+## gendiff -f plain
+[![asciicast](https://asciinema.org/a/CyJvIv6Rzm34ksds33HM2ml2T.svg)](https://asciinema.org/a/CyJvIv6Rzm34ksds33HM2ml2T)
+## gendiff -f json
+[![asciicast](https://asciinema.org/a/d5dbi9iwcChStoRe8EMuZCdvH.svg)](https://asciinema.org/a/d5dbi9iwcChStoRe8EMuZCdvH)
 # 0.4.1
 [![asciicast](https://asciinema.org/a/BZdoAfpeQvyuMGmQNifQzIjHF.svg)](https://asciinema.org/a/BZdoAfpeQvyuMGmQNifQzIjHF)
 ## json diff
@@ -18,7 +25,3 @@ pip install --index-url https://test.pypi.org/simple --extra-index-url https://p
 [![asciicast](https://asciinema.org/a/EuhBCx2k6LCgHrr49CXHSE0GV.svg)](https://asciinema.org/a/EuhBCx2k6LCgHrr49CXHSE0GV)
 ## json dump diff
 [![asciicast](https://asciinema.org/a/peiBrY4KKze8fQWn6jnpFMQ1O.svg)](https://asciinema.org/a/peiBrY4KKze8fQWn6jnpFMQ1O)
-# 0.5.0 (working in progress)
-## gendiff -f default
-## gendiff -f plain
-## gendiff -f json
