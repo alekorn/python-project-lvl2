@@ -10,7 +10,7 @@ def arg_parse():
         '-f',
         '--format',
         help='set format of output',
-        type=format_choise,
+        type=select_format,
         default='default'
     )
     parser.add_argument('first_file', type=parse, help='')
@@ -22,10 +22,10 @@ def arg_parse():
 def generate_diff(first_file, second_file, name='default'):
     first = parse(first_file)
     second = parse(second_file)
-    return format_choise(name)(get_diff(first, second))
+    return select_format(name)(get_diff(first, second))
 
 
-def format_choise(name):
+def select_format(name):
     if name == format.JSON:
         return format.json
     elif name == format.PLAIN:
