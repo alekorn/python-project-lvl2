@@ -27,8 +27,8 @@ def get_diff(first, second, new_dict=None):
         for key in changed:
             first_value = first[key]
             second_value = second[key]
-            if isinstance(first_value, dict
-                    ) and isinstance(second_value, dict):
+            if isinstance(first_value, dict) and isinstance(
+                    second_value, dict):
                 inner = {}
                 new_dict[key] = {
                         STATUS: HAS_CHILDS,
