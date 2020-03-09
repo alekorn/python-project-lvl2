@@ -1,4 +1,7 @@
-from gendiff.constants import ADDED, DELETED, NOT_CHANGED, CHANGED, HAS_CHILDS
+from gendiff.constants import (
+        ADDED, DELETED, NOT_CHANGED, CHANGED,
+        HAS_CHILDS, STATUS, VALUE, OLD_VALUE
+        )
 
 
 def get_diff(first, second, new_dict=None):
@@ -8,39 +11,36 @@ def get_diff(first, second, new_dict=None):
         deleted, added, not_changed, changed = compare_keys(first, second)
         for key in added:
             new_dict[key] = {
-                    'status': ADDED,
-                    'value': second[key]
+                    STATUS: ADDED,
+                    VALUE: second[key]
                     }
         for key in deleted:
             new_dict[key] = {
-                    'status': DELETED,
-                    'value': first[key]
+                    STATUS: DELETED,
+                    VALUE: first[key]
                     }
         for key in not_changed:
             new_dict[key] = {
-                    'status': NOT_CHANGED,
-                    'value': first[key]
+                    STATUS: NOT_CHANGED,
+                    VALUE: first[key]
                     }
         for key in changed:
             first_value = first[key]
             second_value = second[key]
-            if (
-                    not isinstance(first_value, dict)
-                    and
-                    not isinstance(second_value, dict)
-                    ):
-                new_dict[key] = {
-                        'status': CHANGED,
-                        'old_value': first_value,
-                        'value': second_value
-                        }
-            else:
+            if isinstance(first_value, dict
+                    ) and isinstance(second_value, dict):
                 inner = {}
                 new_dict[key] = {
-                        'status': HAS_CHILDS,
-                        'value': inner
+                        STATUS: HAS_CHILDS,
+                        VALUE: inner
                         }
                 get_diff(first_value, second_value, inner)
+            else:
+                new_dict[key] = {
+                        STATUS: CHANGED,
+                        OLD_VALUE: first_value,
+                        VALUE: second_value
+                        }
     return new_dict
 
 
