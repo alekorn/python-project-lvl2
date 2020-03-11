@@ -2,7 +2,7 @@ install:
 	@poetry install
 
 test:
-	poetry run coverage run -m pytest tests -vv
+	poetry run python -m pytest --cov=page_loader tests/ --cov-report=xml
 
 lint:
 	poetry run flake8 gendiff
