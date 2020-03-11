@@ -2,7 +2,7 @@ install:
 	@poetry install
 
 test:
-	poetry run pytest -vv --cov=page_loader tests/ --cov-report=xml
+	poetry run pytest -vv --cov-report xml
 
 lint:
 	poetry run flake8 gendiff
